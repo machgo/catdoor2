@@ -1,0 +1,9 @@
+{
+    "name"          : "catdoor2-backend",
+    "version"       : "0.0.1",
+    "main"          : "server.js",
+    "author"        : "Marco Schmid",
+    "dependencies"  : {
+        "express"   : "*"
+    }
+}
