@@ -4,6 +4,8 @@
     "main"          : "server.js",
     "author"        : "Marco Schmid",
     "dependencies"  : {
-        "express"   : "*"
+        "express"       : "*",
+        "mongoose"      : "*",
+        "body-parser"   : "*"
     }
 }
