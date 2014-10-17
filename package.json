@@ -1,0 +1,17 @@
+{
+  "name": "catdoor-backend",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "main":"./bin/www",
+  "engines": {
+     "node": "0.10.x"
+   },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*"
+  }
+}
