@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Picture = require ('../app/models/picture');
+var Picture = require ('../models/picture');
 
 router.use(function(req, res, next){
     console.log('Some access...');
@@ -12,6 +12,17 @@ router.use(function(req, res, next){
 //GET INDEX
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
+});
+
+
+
+//GET PICTURE RAW
+router.route('/pictures/:picture_id').get(function(req, res){
+    Picture.findById(req.params.picture_id, function(err, picture){
+        if (err)
+            res.send(err);
+        res.json(picture);
+    });
 });
 
 //GET PICTURES
