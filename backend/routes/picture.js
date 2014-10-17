@@ -11,7 +11,7 @@ router.use(function(req, res, next){
 
 //GET INDEX
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
+    res.json({ message: 'hooray! welcome to our api!' });
 });
 
 //GET PICTURES
@@ -28,8 +28,11 @@ router.route('/pictures').get(function(req, res){
 router.route('/pictures').post(function(req, res) {
     var picture = new Picture();
     picture.name = req.body.name;
-    picture.data = req.body.data;
     picture.created = new Date().toJSON();
+    console.log(req.body.data);
+    var buf = new Buffer (req.body.name, 'base64');
+    picture.data = buf;
+
     picture.save(function(err) {
         if (err)
             res.send(err);
@@ -37,6 +40,6 @@ router.route('/pictures').post(function(req, res) {
     });
 });
 
+
+
 module.exports = router;
-
-

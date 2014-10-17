@@ -16,4 +16,3 @@ app.use('/api', pictures);
 
 app.listen(port);
 console.log('Magic happens on port ' + port);
-
