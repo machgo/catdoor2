@@ -21,7 +21,12 @@ router.route('/pictures/:picture_id').get(function(req, res){
     Picture.findById(req.params.picture_id, function(err, picture){
         if (err)
             res.send(err);
-        res.json(picture);
+
+        res.writeHead(200, {
+            'Content-Type': 'image/jpeg',
+            'Content-Length': picture.data.length
+        });
+        res.end(picture.data)
     });
 });
 
