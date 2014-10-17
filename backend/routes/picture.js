@@ -27,10 +27,9 @@ router.route('/pictures').get(function(req, res){
 //POST PICTURE
 router.route('/pictures').post(function(req, res) {
     var picture = new Picture();
-    picture.name = req.body.name;
+    picture.filename = req.body.filename;
     picture.created = new Date().toJSON();
-    console.log(req.body.data);
-    var buf = new Buffer (req.body.name, 'base64');
+    var buf = new Buffer (req.body.data, 'base64');
     picture.data = buf;
 
     picture.save(function(err) {
