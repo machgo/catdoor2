@@ -25,7 +25,10 @@ var doorRoutes = require("./app/routes/door.js");
 router.get('/door', doorRoutes.show);
 
 app.use('/api', router);
+
+//host static index-file
 app.get('/', function (req, res) {
     res.sendFile('./public/index.html', { root: __dirname });
 });
+
 app.listen(port);
