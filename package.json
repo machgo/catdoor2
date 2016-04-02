@@ -1,0 +1,16 @@
+{
+    "name": "catdoor2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "NODE_ENV=production node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.13.4",
+        "mongoose": "^4.4.10"
+    }
+}
