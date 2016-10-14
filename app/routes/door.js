@@ -17,7 +17,7 @@ exports.set = function (req, res, next) {
         // only first request if there's no door already defined.
         if (door == null) {
             var door = new Door();
-            door.unlocked = false;
+            door.unlocked = req.body.unlocked;
             door.save(function (err) {
                 if (err)
                     res.send(err);
