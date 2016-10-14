@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var DoorSchema = new Schema({
-    last_change: Date,
     unlocked: Boolean
 });
 
