@@ -11,4 +11,4 @@ RUN npm install --dev
 COPY . /usr/src/app
 EXPOSE 8080
 
-CMD [ "npm", "run", "startmon" ]
+CMD [ "npm", "start" ]
