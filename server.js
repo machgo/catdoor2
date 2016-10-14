@@ -1,22 +1,24 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var port = process.env.PORT || 8080;
+var port = 8080;
 var config = require("./config.js");
 
 var app = express();
 var mongoose = require('mongoose');
 mongoose.connect(config.db[process.env.NODE_ENV]);
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use('/api/door', bodyParser.json());
 app.use('/api/pictures', bodyParser.json());
-app.use('/api/upload', function(req, res, next) {
+app.use('/api/upload', function (req, res, next) {
     var data = new Buffer('');
-    req.on('data', function(chunk) {
+    req.on('data', function (chunk) {
         data = Buffer.concat([data, chunk]);
     });
-    req.on('end', function() {
+    req.on('end', function () {
         req.rawBody = data;
         next();
     });
@@ -40,7 +42,9 @@ app.use('/api', router);
 
 //host static index-file
 app.get('/', function (req, res) {
-    res.sendFile('./public/index.html', { root: __dirname });
+    res.sendFile('./public/index.html', {
+        root: __dirname
+    });
 });
 
 app.listen(port);

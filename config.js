@@ -1,7 +1,7 @@
 module.exports = {
     db: {
-        production: "mongodb://localhost/catdoor-prod",
-        development: "mongodb://localhost/catdoor-dev",
-        test: "mongodb://localhost/catdoor-test"
+        production: "mongodb://mongo/catdoor-prod",
+        development: "mongodb://mongo/catdoor-dev",
+        test: "mongodb://mongo/catdoor-test"
     }
 };
