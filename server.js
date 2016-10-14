@@ -6,7 +6,7 @@ var config = require("./config.js");
 
 var app = express();
 var mongoose = require('mongoose');
-mongoose.connect(config.db[process.env.NODE_ENV]);
+mongoose.connect("mongodb://mongo/catdoor-prod");
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -23,7 +23,6 @@ app.use('/api/upload', function (req, res, next) {
         next();
     });
 });
-
 
 var router = express.Router();
 
