@@ -1,17 +1,18 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var PictureSchema = new Schema({
+var EventSchema = new Schema({
     name: String,
+    sender: String,
     created_at: Date,
     data: Buffer
 });
 
 //remove binary data from model
-PictureSchema.methods.toJSON  = function(){
+EventSchema.methods.toJSON = function () {
     var obj = this.toObject();
     delete obj.data;
     return obj;
 }
 
-module.exports = mongoose.model('Picture', PictureSchema);
+module.exports = mongoose.model('Event', EventSchema);

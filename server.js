@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use('/api/door', bodyParser.json());
-app.use('/api/pictures', bodyParser.json());
-app.use('/api/upload', function (req, res, next) {
+app.use('/api/events', bodyParser.json());
+app.use('/api/uploads', function (req, res, next) {
     var data = new Buffer('');
     req.on('data', function (chunk) {
         data = Buffer.concat([data, chunk]);
@@ -26,12 +26,12 @@ app.use('/api/upload', function (req, res, next) {
 
 var router = express.Router();
 
-var picturesRoutes = require("./app/routes/pictures.js");
-router.get('/pictures', picturesRoutes.index);
-router.get('/pictures/:picture_id', picturesRoutes.show);
-router.post('/pictures', picturesRoutes.create);
-router.get('/upload/:picture_id', picturesRoutes.getBinary);
-router.post('/upload/:picture_id', picturesRoutes.setBinary);
+var eventsRouter = require("./app/routes/events.js");
+router.get('/events', eventsRouter.index);
+router.get('/events/:event_id', eventsRouter.show);
+router.post('/events', eventsRouter.create);
+router.get('/uploads/:event_id', eventsRouter.getBinary);
+router.post('/uploads/:event_id', eventsRouter.setBinary);
 
 var doorRoutes = require("./app/routes/door.js");
 router.get('/door', doorRoutes.show);
