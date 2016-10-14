@@ -26,9 +26,7 @@ exports.create = function (req, res, next) {
     event.save(function (err) {
         if (err)
             res.send(err);
-        res.json({
-            message: 'event created..'
-        });
+        res.json(event);
     });
 };
 
