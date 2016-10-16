@@ -4,6 +4,15 @@ exports.index = function (req, res, next) {
     Event.find(function (err, events) {
         if (err)
             res.send(err);
+        for (var i = 0; i < events.length; i++) {
+            var element = events[i];
+            if (element.data !== null) {
+                element.has_data = true
+            } else {
+                element.has_data = false;
+            }
+        }
+        console.log(events);
         res.json(events);
     });
 };
@@ -22,6 +31,7 @@ exports.create = function (req, res, next) {
     event.sender = req.body.sender;
     event.created_at = new Date();
     event.data = null;
+    event.has_data = false;
 
     event.save(function (err) {
         if (err)
@@ -36,6 +46,7 @@ exports.setBinary = function (req, res, next) {
         if (err)
             res.send(err);
         event.data = buf;
+        event.has_data = true;
         event.save(function (err) {
             if (err)
                 res.send(err);

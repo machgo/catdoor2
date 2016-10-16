@@ -5,6 +5,7 @@ var EventSchema = new Schema({
     name: String,
     sender: String,
     created_at: Date,
+    has_data: Boolean,
     data: Buffer
 });
 
