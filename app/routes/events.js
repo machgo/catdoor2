@@ -3,7 +3,7 @@ var Event = require('../models/event');
 exports.index = function (req, res, next) {
     Event.find().sort({
         created_at: -1
-    }).exec(function (err, events) {
+    }).limit(30).exec(function (err, events) {
         if (err)
             res.send(err);
         for (var i = 0; i < events.length; i++) {
