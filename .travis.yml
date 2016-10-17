@@ -1,3 +1,9 @@
 language: node_js
 node_js:
   - 6
+
+services:
+  - docker
+
+before_install:
+  - docker build -t machgo/catdoor2 .
