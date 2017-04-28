@@ -4,6 +4,15 @@ exports.show = function (req, res, next) {
     Door.findOne(function (err, door) {
         if (err)
             res.send(err);
+
+        if (door == null) {
+            door = new Door();
+            door.unlocked = false;
+            door.save(function (err) {
+                if (err)
+                    res.send(err);
+            });
+        }
         console.log(door);
         res.json(door);
     });
