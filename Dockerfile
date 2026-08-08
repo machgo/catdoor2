@@ -1,14 +1,12 @@
-FROM node:latest
+FROM golang:1.26-alpine AS build
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /src
+COPY go.mod ./
+COPY main.go ./
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /catdoor2 .
 
-RUN npm install -g nodemon
-
-COPY package.json /usr/src/app
-RUN npm install --dev
-
-COPY . /usr/src/app
+FROM scratch
+COPY --from=build /catdoor2 /catdoor2
 EXPOSE 8080
-
-CMD [ "npm", "start" ]
+USER 65532:65532
+ENTRYPOINT ["/catdoor2"]
